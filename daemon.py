@@ -11,7 +11,7 @@ import codecs
 import sys, os, time, atexit
 import subprocess
 import fcntl
-from pymongo import MongoClient
+from pymongo import Connection
 from signal import SIGTERM
 import ConfigParser
 
@@ -140,7 +140,7 @@ class JudgeDaemon(Daemon):
 		lockerpath = cfg.get('daemon','LockerPath')
 		while True:
 			try:
-				con = MongoClient(host)
+				con = Connection(host)
 				db = con[dbname]
 				users = db.users
 				problems = db.problems
