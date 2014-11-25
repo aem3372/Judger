@@ -26,3 +26,8 @@ python daemon主体在
 
 关于daemon：
 daemon已从后台运行改为了前台运行，以便使用pm2进行管理。如果不想使用pm2,可以换用unusedfiles中的daemon-back.py
+
+FAQ:
+   如果出现危险代码的评判结果，可以查看log.txt，其中有说明系统调用失败函数的编号，这个代码和sys/syscall.h是一致的。
+   可以通过修改okcall.h来解决这个问题。（具体调用次数可以使用strace来跟踪一次正常代码获得）
+   在judger中有内置部分系统的调用限制表，但这不一定适合你的系统。
